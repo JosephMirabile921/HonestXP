@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=3 uid="uid://d7eioflr8o8u"]
+
+[ext_resource type="Script" path="res://Scenes/Slime/slime.gd" id="1_m1g7i"]
+[ext_resource type="Texture2D" uid="uid://bnuwm8yv4m3ox" path="res://Assets/sprite_slime0.png" id="2_0m8im"]
+[ext_resource type="Texture2D" uid="uid://cxxxfi2g2cjne" path="res://Assets/sprite_slime1.png" id="3_yrl5t"]
+[ext_resource type="Texture2D" uid="uid://bgkhqe70g4ygs" path="res://Assets/sprite_slime2.png" id="4_8bvkc"]
+[ext_resource type="Texture2D" uid="uid://dnt5spwf5cpld" path="res://Assets/sprite_slime3.png" id="5_b2ufm"]
+[ext_resource type="Texture2D" uid="uid://d0plqirgrbpag" path="res://Assets/sprite_slime4.png" id="6_vnytf"]
+[ext_resource type="Texture2D" uid="uid://dr48kps2hc04i" path="res://Assets/sprite_slime5.png" id="7_emr5x"]
+[ext_resource type="Texture2D" uid="uid://dbv536hy1oqbs" path="res://Assets/sprite_slime6.png" id="8_3qwga"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2t4ko"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0m8im")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yrl5t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8bvkc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_b2ufm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vnytf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_emr5x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3qwga")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_smixo"]
+size = Vector2(62, 56)
+
+[node name="Slime" type="RigidBody2D" groups=["slimes"]]
+position = Vector2(252, 105)
+collision_mask = 0
+gravity_scale = 0.0
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_m1g7i")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.90735e-06, -4)
+scale = Vector2(0.20625, 0.23125)
+sprite_frames = SubResource("SpriteFrames_2t4ko")
+animation = &"walk"
+
+[node name="SlimeCollider" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_smixo")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(4.52995e-06, -9.53674e-07)
+scale = Vector2(1.8, 2)
